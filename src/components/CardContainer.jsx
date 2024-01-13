@@ -17,9 +17,15 @@ const players = [
     pName: "Enkhee",
     pScore: 0,
   },
+  {
+    id: 4,
+    pName: "Oyuka",
+    pScore: 0,
+  },
 ];
 const CardContainer = () => {
   const [scores, setScores] = useState(players);
+
   const increase = (id) => {
     let updateScores = scores.map((score) => {
       if (score.id == id) {
@@ -29,8 +35,8 @@ const CardContainer = () => {
     });
     updateScores.sort((b, a) => a.pScore - b.pScore);
     setScores(updateScores);
-    console.log(updateScores);
   };
+
   const decrease = (id) => {
     let updateScores = scores.map((score) => {
       if (score.id == id) {
@@ -39,6 +45,15 @@ const CardContainer = () => {
       return score;
     });
     updateScores.sort((b, a) => a.pScore - b.pScore);
+    setScores(updateScores);
+  };
+  
+  const reset = () => {
+    let updateScores = scores.map((score) => {
+      score.pScore = 0;
+      return score;
+    });
+    console.log("updateScores:", updateScores);
     setScores(updateScores);
   };
   // const increase = (index) => {
@@ -66,7 +81,7 @@ const CardContainer = () => {
           />
         );
       })}
-      <button>Reset</button>
+      <button onClick={() => reset()}>Reset</button>
     </div>
   );
 };
