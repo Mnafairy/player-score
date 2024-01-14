@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/cardContainer.css";
 import Card from "./Card";
+import Add from "./Add";
 const players = [
   {
     id: 1,
@@ -47,7 +48,7 @@ const CardContainer = () => {
     updateScores.sort((b, a) => a.pScore - b.pScore);
     setScores(updateScores);
   };
-  
+
   const reset = () => {
     let updateScores = scores.map((score) => {
       score.pScore = 0;
@@ -82,6 +83,7 @@ const CardContainer = () => {
         );
       })}
       <button onClick={() => reset()}>Reset</button>
+      <Add />
     </div>
   );
 };
